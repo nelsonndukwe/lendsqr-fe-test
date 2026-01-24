@@ -23,7 +23,7 @@ const validUsers: User[] = [{ email: "test@example.com", password: "123456" }];
 
 //Replace with API look up
 
-export const currentUserStore = create<Store>()(
+export const useCurrentUserStore = create<Store>()(
   persist(
     (set, get) => ({
       currentUser: null,
