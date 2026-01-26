@@ -1,0 +1,215 @@
+.parentWrapper {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+
+    .imageWrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        height: 100%;
+        width: 100%;
+        background-color: #FFFFFF;
+
+        .bannerWrapper {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 50px;
+
+            .logo {
+                align-self: flex-start;
+                margin-left: 50px;
+            }
+
+            .banner {
+                object-fit: cover;
+            }
+        }
+    }
+
+    .formWrapper {
+        display: flex;
+        justify-self: center;
+        max-width: 447px;
+        width: 100%;
+        .formSecondaryWrapper {
+            height: 100%;
+            width: 100%;
+        }
+
+        .header {
+            margin-bottom: 40px;
+
+            h1 {
+                font-weight: 700;
+                font-size: 40px;
+                line-height: 100%;
+                letter-spacing: -4%;
+                margin-bottom: 10px;
+            }
+
+            p {
+                font-family: Avenir Next;
+                font-weight: 400;
+                font-size: 20px;
+                line-height: 100%;
+                letter-spacing: 0%;
+            }
+        }
+
+        form {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+
+            input {
+                width: 100%;
+                height: 50px;
+                padding: 0 15px;
+                border: 2px solid #545f7d26;
+                border-radius: 8px;
+                font-size: 16px;
+                background-color: transparent;
+                color: black;
+                background-color: #fff;
+                color: #000;
+
+                &:focus {
+                    outline: none;
+                    border-color: #39cdcc;
+                }
+
+                &::placeholder {
+                    color: #545f7d;
+                    font-weight: 400;
+                    font-size: 14px;
+                    line-height: 100%;
+                    letter-spacing: 0%;
+                }
+
+                &:autofill {
+                    background: red;
+                }
+            }
+
+            .passwordWrapper {
+                position: relative;
+                width: 100%;
+
+                .togglePassword {
+                    position: absolute;
+                    top: 50%;
+                    right: 15px;
+                    transform: translateY(-50%);
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    font-size: 14px;
+                    color: #39cdcc;
+                }
+            }
+
+            .forgotPassword {
+                align-self: flex-start;
+
+                p {
+                    font-family: Avenir Next;
+                    font-weight: 600;
+                    font-size: 12px;
+                    line-height: 100%;
+                    letter-spacing: 10%;
+                    text-align: left;
+                    text-transform: uppercase;
+                    color: #39cdcc;
+                    cursor: pointer;
+                }
+            }
+
+            button {
+                width: 100%;
+                height: 50px;
+                background-color: #39cdcc;
+                color: white;
+                border: none;
+                border-radius: 8px;
+                font-size: 18px;
+                font-weight: 600;
+                cursor: pointer;
+
+                font-family: Avenir Next;
+                font-weight: 600;
+                font-size: 14px;
+                line-height: 100%;
+                letter-spacing: 10%;
+                text-align: center;
+                text-transform: uppercase;
+            }
+        }
+        .logoWrapper{
+            display:none;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .parentWrapper {
+        grid-template-columns: 1fr;
+        .imageWrapper {
+            display: none; // optional: hide banner on mobile
+        }
+
+        .formWrapper{
+            width:100%;
+
+            .logoWrapper{
+                position: absolute;
+                top: 40px;
+                display:block;
+            }
+            
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .parentWrapper {
+        grid-template-columns: 1fr;
+
+        .imageWrapper {
+            gap: 30px;
+
+            .bannerWrapper {
+                gap: 30px;
+
+                .logo {
+                    margin-left: 20px;
+                }
+            }
+        }
+
+        .formWrapper {
+            padding: 40px 20px;
+
+            .header {
+                h1 {
+                    font-size: 32px;
+                }
+
+                p {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+}
