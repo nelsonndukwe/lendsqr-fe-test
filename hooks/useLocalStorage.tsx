@@ -39,18 +39,6 @@ function useLocalStorage<T>(
         }
     }, [key, storedValue, hydrated]);
 
-    useEffect(() => {
-        try {
-            if (storedValue === undefined) {
-                window.localStorage.removeItem(key);
-            } else {
-                window.localStorage.setItem(key, JSON.stringify(storedValue));
-            }
-        } catch (error) {
-            console.error(error);
-        }
-    }, [key, storedValue]);
-
     const setValue = (value: SetValue<T>) => {
         try {
             const valueToStore =

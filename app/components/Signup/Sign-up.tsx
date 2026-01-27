@@ -5,6 +5,8 @@ import { icons, images } from "@/lib/assets";
 import { useState } from "react";
 import useLocalStorage from "@/hooks/useLocalStorage";
 import { User } from "@/types";
+import { getUsers } from "@/app/actions/sign-in";
+import { useRouter } from "next/navigation";
 
 const Signup = () => {
     const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -14,50 +16,41 @@ const Signup = () => {
     const [response, setResponse] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(false);
     const [_, setUser] = useLocalStorage<User | null>("user", null);
-
-    const USERS_JSON_PATH = "../../../users.json"
+    const router = useRouter();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-    
-      setLoading(true);
-      setResponse("");
-    
-      try {
-        const res = await fetch(USERS_JSON_PATH);
-    
-        if (!res.ok) {
-          throw new Error("Failed to load users");
-        }
-        
-    
-        const users: User[] = await res.json();
+        e.preventDefault();
 
-        console.log(users)
-    
-        const matchedUser = users.find(
-          (user) => user.email === email && user.password === password
-        );
-    
-        if (!matchedUser) {
-          setResponse("Invalid email or password");
-          return;
+        setLoading(true);
+        setResponse("");
+
+        try {
+            const users: User[] = await getUsers();
+
+            console.log(users);
+
+            const matchedUser = users.find(
+                (user) => user.email === email && user.password === password
+            );
+
+            if (!matchedUser) {
+                setResponse("Invalid email or password");
+                return;
+            }
+
+            setUser(matchedUser);
+            setEmail("");
+            setPassword("");
+            setResponse("Login successful");
+            router.push(`/dashboard/${matchedUser.id}/users`);
+            console.log("Login successful:", matchedUser);
+        } catch (error) {
+            console.error("Login error:", error);
+            setResponse("An error occurred during login");
+        } finally {
+            setLoading(false);
         }
-    
-        setUser(matchedUser);
-        setEmail("");
-        setPassword("");
-        setResponse("Login successful");
-    
-        console.log("Login successful:", matchedUser);
-      } catch (error) {
-        console.error("Login error:", error);
-        setResponse("An error occurred during login");
-      } finally {
-        setLoading(false);
-      }
     };
-    
 
     return (
         <div className={styles.parentWrapper}>
@@ -129,6 +122,8 @@ const Signup = () => {
                         <div className={styles.forgotPassword}>
                             <p className="">Forgot PASSWORD?</p>
                         </div>
+
+                        {response && <span>{response}</span>}
 
                         <button disabled={loading} type="submit">
                             {loading ? "Loading..." : " Log in"}
