@@ -6,6 +6,7 @@ import Image from "next/image";
 import styles from "./sidebar.module.scss";
 import { useParams, usePathname } from "next/navigation";
 import Link from "next/link";
+import { icons } from "@/lib/assets";
 
 const Sidebar = () => {
     const {
@@ -17,10 +18,10 @@ const Sidebar = () => {
         closeMobileSidebar,
     } = useDashboardState();
     const pathName = usePathname();
-    const {orgId} = useParams();
+    const { orgId } = useParams();
     const state = isMobile ? openMobile : open;
 
-    console.log({orgId});
+    console.log({ orgId });
     const routes = getRoutes(orgId, pathName);
     return (
         <div
@@ -30,9 +31,7 @@ const Sidebar = () => {
         >
             <div
                 onClick={toggleSidebar}
-                className={`${styles.sidebarHeader} ${
-                    state ? styles.open : styles.closed
-                }`}
+               
             >
                 <p
                     className={`${styles.primary} ${
@@ -42,13 +41,25 @@ const Sidebar = () => {
                     Untitled UI
                 </p>
 
-                <p
+                <Link href={""} className={styles.homeLink}>
+                    <div>
+                        <Image
+                            src={icons.dashboard}
+                            alt="icon"
+                            width={16}
+                            height={16}
+                        />
+                        <p>Dashboard</p>
+                    </div>
+                </Link>
+
+                {/* <p
                     className={`${styles.secondary} ${
                         state ? styles.open : styles.closed
                     }`}
                 >
                     UI
-                </p>
+                </p> */}
             </div>
 
             <div className={styles.menuSection}>

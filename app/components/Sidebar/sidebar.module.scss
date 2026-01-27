@@ -5,8 +5,7 @@
     flex-direction: column;
     overflow: auto;
     justify-content: space-between;
-    padding: 0.25rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding-inline: 20px;
     transition: all 0.3s ease-in-out;
     width: 283px;
 
@@ -112,12 +111,18 @@
     }
 }
 
+.homeLink {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 .menuSection {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     height: max-content;
-    padding: 5rem 0;
+    padding: 2rem 0;
 }
 
 .menuSection p {

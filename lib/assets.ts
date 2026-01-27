@@ -20,7 +20,7 @@ serviceAccounts:"/icons/service-accounts.svg",
 settlements:"/icons/settlements.svg",
 
 reports:"/icons/reports.svg",
-
+dashboard:"/icons/dashboard.svg",
 
 preferences: "/icons/preferences.svg",
 fessAndPricing:"/icons/fees-and-pricings.svg",
