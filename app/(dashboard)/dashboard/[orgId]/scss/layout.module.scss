@@ -1,0 +1,20 @@
+// flex h-screen bg-accent dark:bg-gray-900
+// scroll relative mx-2 h-screen w-full overflow-auto bg-white p-1 shadow-md dark:bg-background
+.layoutWrapper {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+
+    .childrenWrapper {
+        position: relative;
+        margin-inline: 8px;
+        height: 100vh;
+        width: 100%;
+        overflow: auto;
+        background-color: white;
+    }
+}
+
+
+
+//283
