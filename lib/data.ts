@@ -145,3 +145,13 @@ export const getRoutes = (id: ParamValue, pathName: string) => {
 
     return routes;
 };
+
+
+
+
+export const organizations = [
+	{ key: 'Irorun', label: 'Irorun' },
+	{ key: 'Llendersqr', label: 'Lendersqr' },
+	{ key: 'paystack', label: 'Paystack' },
+
+];

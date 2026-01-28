@@ -27,7 +27,7 @@ fessAndPricing:"/icons/fees-and-pricings.svg",
 AuditLogs:"/icons/audit-logs.svg",
 systemMessages:"/icons/system-messages.svg",
 sideUser: "/icons/side-users.svg",   
-
+logout:"/icons/logout.svg"
 }
 
 

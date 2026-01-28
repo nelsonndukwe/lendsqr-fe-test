@@ -2,16 +2,25 @@
 // scroll relative mx-2 h-screen w-full overflow-auto bg-white p-1 shadow-md dark:bg-background
 .layoutWrapper {
     display: flex;
-    height: 100vh;
+    height: 100%;
     width: 100%;
+    flex-shrink: 0;
+    flex: 1;              /* take remaining height after navbar */
+
+
 
     .childrenWrapper {
         position: relative;
-        padding-inline: 8px;
-        height: 100vh;
+        padding: 42px;
+        height: 100%;
         width: 100%;
         overflow: auto;
         background-color: white;
+        height: calc(100vh - 100px);
+
+        @media(max-width: 768px) {
+            padding: 4px;
+        }
     }
 }
 

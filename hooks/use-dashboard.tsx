@@ -21,6 +21,22 @@ export const useDashboardState = () => {
 
     // Detect screen size safely
     useEffect(() => {
+        const handleResize = () => {
+            window.addEventListener("resize", () => {
+                const isMobile = window.innerWidth <= 768;
+                setState((prev) => ({
+                    ...prev,
+                    isMobile,
+                }));
+            });
+        };
+
+        handleResize();
+
+        return () => window.removeEventListener("resize", handleResize);
+    }, [setState]);
+
+    useEffect(() => {
         const checkScreen = () => {
             const isMobile = window.innerWidth <= 768;
             setState((prev) => ({
