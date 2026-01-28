@@ -63,16 +63,14 @@
 
         transition: all 0.5s ease-in-out;
 
-      
         p {
             font-family: Work Sans;
             font-weight: 400;
             font-size: 16px;
             line-height: 100%;
             letter-spacing: 0px;
-            color: #213F7D;
+            color: #213f7d;
         }
-       
 
         &.closed {
             padding-left: 12px;
@@ -123,7 +121,7 @@
         letter-spacing: 0px;
         padding-left: 25px;
         font-family: "Work Sans", sans-serif;
-
+        color: #545f7d;
         &.closed {
             padding-left: 12px;
         }
@@ -131,7 +129,6 @@
 }
 
 .menuSection p {
-    // font-family: "Work Sans";
     padding: 0.25rem;
     font-weight: 500;
     font-size: 16px;
@@ -139,6 +136,7 @@
     letter-spacing: 0px;
     color: #213f7d;
     font-family: "Work Sans", sans-serif;
+    text-transform: capitalize;
 
     @media (min-width: 768px) {
         font-size: 0.875rem;
@@ -236,7 +234,7 @@
             line-height: 100%;
             letter-spacing: 0px;
             font-family: "Work Sans", sans-serif;
-            color: #213F7D;
+            color: #213f7d;
         }
     }
 }
