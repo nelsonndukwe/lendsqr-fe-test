@@ -146,12 +146,19 @@ export const getRoutes = (id: ParamValue, pathName: string) => {
     return routes;
 };
 
-
-
-
 export const organizations = [
-	{ key: 'Irorun', label: 'Irorun' },
-	{ key: 'Llendersqr', label: 'Lendersqr' },
-	{ key: 'paystack', label: 'Paystack' },
+    { key: "Irorun", label: "Irorun" },
+    { key: "Llendersqr", label: "Lendersqr" },
+    { key: "paystack", label: "Paystack" },
+];
 
+export const userMetrics = [
+    { label: "Users", count: 2453, icon: icons.users },
+    { label: "Active Users", count: 2453, icon: icons.activeUser },
+    { label: "Users with Loans", count: 12453, icon: icons.userWithLoans },
+    {
+        label: "Users with Savings",
+        count: 102453,
+        icon: icons.usersWithSavings,
+    },
 ];
