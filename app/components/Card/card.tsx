@@ -2,22 +2,20 @@
 
 import Image from "next/image";
 import styles from "./card.module.scss";
-
-
-interface Props {
+interface CardProps {
     icon: string;
-    Label: string;
+    label: string;
     count: number;
 }
 
-const Card = (props: Props) => {
+const Card = ({ icon, label, count }: CardProps) => {
     return (
         <div className={styles.card}>
             <div className={styles.icon}>
-                <Image src={props.icon} alt="icon" width={40} height={40} />{" "}
+                <Image src={icon} alt="icon" width={40} height={40} />
             </div>
-            <p>{props.Label}</p>
-            <p className="">{props.count}</p>
+            <p className={styles.label}>{label}</p>
+            <p className={styles.count}>{count.toLocaleString()}</p>
         </div>
     );
 };
