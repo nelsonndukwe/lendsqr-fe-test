@@ -4,8 +4,19 @@ import styles from "./navbar.module.scss";
 import { icons, images } from "@/lib/assets";
 import { GoChevronDown } from "react-icons/go";
 import { CiSearch } from "react-icons/ci";
+import { Dropdown } from "../Dropdown/dropdown";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import useLocalStorage from "@/hooks/useLocalStorage";
+import { User } from "@/types";
+import { IconType } from "react-icons";
+
 
 const Navbar = () => {
+    const [selected, setSelected] = useState("10")
+    const router = useRouter()
+    const [user] = useLocalStorage<User | undefined>("user", undefined);
+
     return (
         <div className={styles.parentWrapper}>
             <div className={styles.logoWrapper}>
@@ -22,7 +33,7 @@ const Navbar = () => {
                 <div className={styles.searchBar}>
                     <input type="text" placeholder="Search for anything" />
                     <button>
-                        <CiSearch color="#FFFFFF" size={16}  />
+                        <CiSearch color="#FFFFFF" size={16} />
                     </button>
                 </div>
             </div>
@@ -40,20 +51,43 @@ const Navbar = () => {
                     />
                 </div>
 
-                <div className={styles.profileInfo}>
-                    <Image
-                        src={images.avatar}
-                        alt="profile-pic"
-                        width={40}
-                        height={40}
-                        loading="eager"
-                    />
 
-                    <div>
-                        <p>Adedeji</p>
-                        <GoChevronDown />
-                    </div>
-                </div>
+
+                <Dropdown
+                    options={[
+                        { value: "view-user", label: user?.fullName as string, iconElement: GoChevronDown, },
+                        { value: "blacklist-user", label: user?.status as string, iconElement: GoChevronDown, },
+
+                    ]}
+                    value={selected}
+                    onChange={setSelected}
+                    trigger={<div className={styles.profileInfo}>
+                        <Image
+                            src={images.avatar}
+                            alt="profile-pic"
+                            width={40}
+                            height={40}
+                            loading="eager"
+                        />
+
+                        <div>
+                            <p>{user?.username}</p>
+                            <GoChevronDown />
+                        </div>
+                    </div>}
+
+                    renderOption={(Option) => (
+                        <div onClick={() => {
+                            if (Option.href) router.push(Option.href)
+
+                            return
+                        }} className={styles.render}>
+                            <span>{Option.label}</span>
+                        </div>
+                    )}
+                />
+
+
             </div>
         </div>
     );

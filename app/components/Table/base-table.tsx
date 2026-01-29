@@ -7,14 +7,14 @@ import { useState } from "react";
 import { Dropdown } from "../Dropdown/dropdown";
 import { icons } from "@/lib/assets";
 import Image from "next/image";
-import Link from "next/link";
 import useLocalStorage from "@/hooks/useLocalStorage";
 import { useRouter } from "next/navigation";
+import Loader from "../Loader/loader";
 
 
 
 const MyTable = ({ users, loading }: { users: User[], loading: boolean }) => {
-    const [selected, setSelected] = useState("10")
+    const [selected, setSelected] = useState("")
     const [user] = useLocalStorage<User | undefined>("user", undefined);
     const router = useRouter()
     return (
@@ -31,7 +31,9 @@ const MyTable = ({ users, loading }: { users: User[], loading: boolean }) => {
                 <tbody>
 
                     {loading ?
-                        <div className="">Loading</div>
+                        <div className={styles.loader}>
+                            <Loader />
+                        </div>
 
                         : users && users.length !== 0 ?
                             users.map((user) => {
@@ -50,15 +52,15 @@ const MyTable = ({ users, loading }: { users: User[], loading: boolean }) => {
                                             <Dropdown<string>
                                                 options={[
                                                     { value: "view-user", label: "View Details ", icon: icons.viewUser, href: `/dashboard/${user.id}/users/${user.username}` },
-                                                    { value: "blacklist-user", label: "Blacklist user", icon: icons.blackListUser, },
-                                                    { value: "whitelist-user", label: "whitelist user", icon: icons.whiteListUser, }
+                                                    { value: "blacklist-user", label: "Blacklist user", icon: icons.blackListUser, href: `/dashboard/${user.id}/blacklist` },
+                                                    { value: "whitelist-user", label: "whitelist user", icon: icons.whiteListUser, href: `/dashboard/${user.id}/whitelist` }
 
                                                 ]}
                                                 value={selected}
                                                 onChange={setSelected}
                                                 trigger={<p className={styles.triggerElement}>:</p>}
 
-                                                renderOption={(option, selected) => (
+                                                renderOption={(option) => (
                                                     <div onClick={() => {
                                                         if (option.href) router.push(option.href)
 

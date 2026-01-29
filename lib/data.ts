@@ -147,9 +147,9 @@ export const getRoutes = (id: ParamValue, pathName: string) => {
 };
 
 export const organizations = [
-    { key: "Irorun", label: "Irorun" },
-    { key: "Llendersqr", label: "Lendersqr" },
-    { key: "paystack", label: "Paystack" },
+    { value: "Irorun", label: "Irorun" },
+    { value: "Llendersqr", label: "Lendersqr" },
+    { value: "paystack", label: "Paystack" },
 ];
 
 export const userMetrics = [

@@ -84,8 +84,21 @@
             display: flex;
             align-items: center;
             gap: 9px;
-            padding: 0.5rem;
+            padding: 4px;
             color: #213f7d;
+
+            p {
+                font-family: "Work Sans", sans-serif;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 100%;
+                letter-spacing: 0px;
+                color: #213f7d;
+            }
+
+            div{
+                
+            }
         }
         .homeLink {
             padding: 0.5rem;

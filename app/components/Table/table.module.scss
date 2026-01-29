@@ -25,6 +25,8 @@
     }
 
     tbody {
+        position: relative;
+        height:150px;
         tr {
             border-bottom: 1px solid #e5e9f2;
 
@@ -213,4 +215,13 @@
         line-height: 100%;
         letter-spacing: 0%;
     }
+}
+
+
+.loader{
+position: absolute;
+left:50%;
+top:50%;
+transform: translate(-50%,-50%);
+
 }

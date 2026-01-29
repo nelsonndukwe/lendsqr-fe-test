@@ -9,6 +9,8 @@ import Link from "next/link";
 import { icons } from "@/lib/assets";
 import { ChangeEvent, useState } from "react";
 import useLocalStorage from "@/hooks/useLocalStorage";
+import { Dropdown } from "../Dropdown/dropdown";
+import { GoChevronDown } from "react-icons/go";
 
 const Sidebar = () => {
     const [selectedOrg, setSelectedOrg] = useState("");
@@ -43,27 +45,46 @@ const Sidebar = () => {
     }
     return (
         <div
-            className={`${styles.sidebar} ${
-                state ? styles.open : ""
-            } scroll dark`}
+            className={`${styles.sidebar} ${state ? styles.open : ""
+                } scroll dark`}
         >
             <div className={styles.sidebarWrapper}>
                 <div
-                    onClick={toggleSidebar}
-                    className={`${styles.sidebarHeader} ${
-                        state ? styles.closed : ""
-                    }`}
+                    // onClick={toggleSidebar}
+                    className={`${styles.sidebarHeader} ${state ? styles.closed : ""
+                        }`}
                 >
-                    <div className={styles.organization}>
-                        <Image
-                            src={icons.organizations}
-                            alt="icon"
-                            width={16}
-                            height={16}
-                            loading="eager"
-                        />
-                        <p>Switch organization</p>
-                    </div>
+
+
+                    <Dropdown
+                        options={organizations}
+                        placeholder="Switch organization"
+                        value={selectedOrg}
+                        onChange={setSelectedOrg}
+                        trigger={<div className={styles.organization}>
+                            <Image
+                                src={icons.organizations}
+                                alt="icon"
+                                width={16}
+                                height={16}
+                                loading="eager"
+                            />
+                            <p>{selectedOrg}</p> <div>
+                                <GoChevronDown />
+                            </div>
+                        </div>}
+
+                        renderOption={(Option) => (
+                            <div onClick={() => {
+                                if (Option.href) router.push(Option.href)
+
+                                return
+                            }} className={styles.render}>
+                                <span>{Option.label}</span>
+                            </div>
+                        )}
+                    />
+
 
                     <Link href={""} className={styles.homeLink}>
                         <Image
@@ -91,11 +112,9 @@ const Sidebar = () => {
                                     <Link
                                         key={r.title}
                                         href={r.href}
-                                        className={`${
-                                            r.active ? styles.active : ""
-                                        } ${
-                                            state ? styles.closed : styles.open
-                                        }`}
+                                        className={`${r.active ? styles.active : ""
+                                            } ${state ? styles.closed : styles.open
+                                            }`}
                                     >
                                         <div className={styles.menuItem}>
                                             <Image
@@ -114,9 +133,8 @@ const Sidebar = () => {
                 </div>
 
                 <div
-                    className={`${styles.sidebarFooter} ${
-                        state ? styles.closed : ""
-                    }`}
+                    className={`${styles.sidebarFooter} ${state ? styles.closed : ""
+                        }`}
                 >
                     <div onClick={handleLogout}>
                         <Image

@@ -10,7 +10,7 @@ import loading from '../../loading';
 
 function TableComponent() {
     const [data, setData] = useState<User[]>([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [response, setResponse] = useState<"success" | "error" | "idle">();
     const [page, setPage] = useState(1)
 
@@ -34,14 +34,14 @@ function TableComponent() {
     return (
         <>
             <MyTable loading={loading} users={handlePagination(page, 8, data)} />
-            {!loading && <div className="">
+            {!loading &&
 
                 <Pagination
                     totalItems={data.length}
                     pageSize={8}
                     currentPage={page}
                     onPageChange={setPage}
-                />            </div>}
+                />}
         </>
     );
 }

@@ -1,11 +1,14 @@
 import { useState, useRef, useEffect, ReactElement, cloneElement } from "react";
 import styles from "./dropdown.module.scss";
+import { IconType } from "react-icons";
 
 export type DropdownOption<T = string> = {
     label: string;
     value: T;
     icon?: string;
-    href?:string
+    href?: string;
+    iconElement?: IconType
+
 };
 
 type DropdownProps<T> = {
@@ -65,7 +68,7 @@ export function Dropdown<T>({
                 onClick={toggleOpen}
                 type="button"
             >
-                {selected?.label || placeholder}
+                {selected?.label?? placeholder}
                 <span className={`${styles.dropdown__arrow} ${open ? styles.active : ""}`}>
                     ▾
                 </span>
