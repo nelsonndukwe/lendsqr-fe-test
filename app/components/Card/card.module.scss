@@ -3,7 +3,7 @@
     min-height: 160px;
     border-width: 1px;
     border-radius: 4px;
-
+    width: 100%;
     display: flex;
     flex-direction: column;
     padding: 16px;
@@ -11,9 +11,9 @@
     justify-content: center;
     align-items: start;
     border-width: 0px, 0px, 0px, 0px;
+    background: #FFFFFF;
 
-    border-style: solid;
-
+    border: 1px solid #213F7D0F;
     border-color: #213f7d0f;
 
     box-shadow: 3px 5px 20px 0px #0000000a;
@@ -41,7 +41,7 @@
         line-height: 100%;
         letter-spacing: 0%;
         text-transform: uppercase;
-        color:#545F7D;
+        color: #545f7d;
     }
 
     .count {

@@ -1,10 +1,10 @@
 import { User } from "@/types";
 
-export const handlePagination =  (
+export const handlePagination = (
     page: number,
     limit: number,
     users: User[]
-): User[]=> {
+): User[] => {
     const startIndex = (page - 1) * limit
     const endIndex = page * limit
 
@@ -14,44 +14,39 @@ export const handlePagination =  (
 export const getPaginationRange = (
     currentPage: number,
     totalPages: number,
-    siblingCount = 1
-  ): (number | string)[] => {
-    const range = (start: number, end: number): number[] =>
-      Array.from({ length: end - start + 1 }, (_, i) => start + i);
-  
+    siblingCount = 1,
+    sort = "asc"
+): (number | "...")[] => {
+    const range = (start: number, end: number) =>
+        Array.from({ length: end - start + 1 }, (_, i) => start + i)
 
-    const totalNumbersToShow = siblingCount * 2 + 5;
-  
-    if (totalPages <= totalNumbersToShow) {
-      return range(1, totalPages);
-    }
-  
-    const leftSiblingIndex  = Math.max(currentPage - siblingCount, 1);
-    const rightSiblingIndex = Math.min(currentPage + siblingCount, totalPages);
-  
-    const shouldShowLeftDots  = leftSiblingIndex > 2;
-    const shouldShowRightDots = rightSiblingIndex < totalPages - 1;
-  
-    const parts: (number | string)[] = [];
-  
-    parts.push(1);
-  
-    if (shouldShowLeftDots) {
-      parts.push("...");
-    }
-  
-    const leftMost = shouldShowLeftDots ? leftSiblingIndex : 2;
-    const rightMost = shouldShowRightDots ? rightSiblingIndex : totalPages - 1;
-  
-    parts.push(...range(leftMost, rightMost));
-  
-    if (shouldShowRightDots) {
-      parts.push("...");
-    }
-  
-    if (rightMost < totalPages) {
-      parts.push(totalPages);
-    }
-  
-    return parts;
-  };
+    const pages: (number | "...")[] = []
+
+    const leftSibling = Math.max(currentPage - siblingCount, 1)
+    const rightSibling = Math.min(currentPage + siblingCount, totalPages)
+
+    pages.push(1)
+
+    if (leftSibling > 2) pages.push("...")
+
+    pages.push(...range(leftSibling, rightSibling))
+
+    if (rightSibling < totalPages - 1) pages.push("...")
+
+    if (totalPages > 1) pages.push(totalPages)
+
+    // 🔒 Enforce uniqueness
+    const uniquePages = Array.from(new Set(pages))
+
+    // 🔢 Sort numbers, keep ellipses in place
+    const numbers = uniquePages.filter(
+        (p): p is number => typeof p === "number"
+    )
+    const dots = uniquePages.filter(p => p === "...")
+
+    numbers.sort((a, b) => (sort === "asc" ? a - b : b - a))
+
+    return sort === "asc"
+        ? [...numbers.slice(0, 1), ...uniquePages.slice(1)]
+        : [...numbers, ...dots]
+}

@@ -21,7 +21,7 @@ const Pagination = ({
             <div className={styles.paginationInfo}>
                 <span>Showing</span>
                 <select className={styles.paginationSelect}>
-                    <option>{pageSize}</option>
+                    <option>{pageSize * currentPage}</option>
                 </select>
                 <span>out of {totalItems}</span>
             </div>

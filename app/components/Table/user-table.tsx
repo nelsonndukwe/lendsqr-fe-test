@@ -34,14 +34,14 @@ function TableComponent() {
     return (
         <>
             <MyTable loading={loading} users={handlePagination(page, 8, data)} />
-            <div className="">
+            {!loading && <div className="">
 
                 <Pagination
                     totalItems={data.length}
                     pageSize={8}
                     currentPage={page}
                     onPageChange={setPage}
-                />            </div>
+                />            </div>}
         </>
     );
 }

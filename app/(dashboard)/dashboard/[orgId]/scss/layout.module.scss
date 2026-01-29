@@ -9,11 +9,11 @@
 
     .childrenWrapper {
         position: relative;
-        padding: 36px;
+        padding: 10px 36px;
         height: 100%;
         width: 100%;
         overflow: auto;
-        background-color: white;
+        background: #fbfbfb;
         height: calc(100vh - 100px);
 
         @media(max-width: 768px) {

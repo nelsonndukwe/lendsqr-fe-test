@@ -16,8 +16,8 @@ const styleMap: Record<StatusVariant, keyof typeof styles> = {
 
 const Status = ({ variant }: StatusProps) => {
     return (
-<div className={`${styles.status} ${styles[styleMap[variant]]}`}>
-<p >{variant}</p>
+        <div className={`${styles.status} ${styles[styleMap[variant]]}`}>
+            <p >{variant}</p>
         </div>
     );
 };

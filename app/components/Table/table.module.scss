@@ -13,6 +13,7 @@
     color: #545f7d;
 
     thead {
+        cursor: pointer;
         th {
             text-align: left;
             font-size: 12px;
@@ -116,6 +117,7 @@
     font-family: "Work Sans";
     padding: 16px 8px;
     height: 30px;
+    margin-block: 16px;
 
     .paginationInfo {
         display: flex;
@@ -152,13 +154,12 @@
         gap: 8px;
     }
 
-    .paginationBtn{
+    .paginationBtn {
         background: rgba(33, 63, 125, 0.1) !important;
-        color:#213F7D;
-        width:12px;
-        height:12px;
+        color: #213f7d;
+        width: 12px;
+        height: 12px;
         padding: 8px 10px;
-
     }
     .paginationBtn,
     .paginationPage {
@@ -174,21 +175,21 @@
             background 0.2s,
             color 0.2s;
 
-        :hover:not(:disabled) {
+        &:hover:not(:disabled) {
             background: #1e3a8a;
             color: #fff;
         }
 
-        :disabled {
+        &:disabled {
             opacity: 0.4;
             cursor: not-allowed;
         }
     }
 
     .paginationPage {
-        .active {
-            background: #1e3a8a;
-            color: #fff;
+        &.active {
+            background: transparent;
+            color: #1e3a8a;
         }
     }
 
