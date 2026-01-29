@@ -8,7 +8,7 @@ import Status from "./status";
 
 const MyTable = ({ users, loading }: { users: User[], loading: boolean }) => {
     return (
-        <div className={styles.tableCard}>
+        <div className={`${styles.tableCard} scroll`}>
             <table className={styles.userTable}>
                 <thead>
                     <tr>
