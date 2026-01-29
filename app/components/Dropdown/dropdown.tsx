@@ -4,7 +4,8 @@ import styles from "./dropdown.module.scss";
 export type DropdownOption<T = string> = {
     label: string;
     value: T;
-    icon: string;
+    icon?: string;
+    href?:string
 };
 
 type DropdownProps<T> = {
