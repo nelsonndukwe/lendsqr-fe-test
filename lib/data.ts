@@ -162,3 +162,11 @@ export const userMetrics = [
         icon: icons.usersWithSavings,
     },
 ];
+
+
+
+export const pageSizeOptions = [
+    { label: "10", value: 10 },
+    { label: "20", value: 20 },
+    { label: "50", value: 50 },
+  ]
