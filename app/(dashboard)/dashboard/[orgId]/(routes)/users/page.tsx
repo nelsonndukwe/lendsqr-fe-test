@@ -4,7 +4,7 @@ import Card from "@/app/components/Card/card";
 import TableComponent from "@/app/components/Table/user-table";
 const usersPage = () => {
     return (
-        <div style={{ height: "100vh" }}>
+        <div >
             <div className="">
                 <p className={styles.header}>Users</p>
             </div>

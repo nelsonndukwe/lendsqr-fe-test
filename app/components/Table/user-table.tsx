@@ -4,12 +4,15 @@ import React, { useEffect, useState } from "react";
 import { getUsers } from "@/app/actions/sign-in";
 import { User } from "@/types";
 import MyTable from "./base-table";
+import { handlePagination } from "@/helpers";
+import Pagination from "./pagination";
+import loading from '../../loading';
 
 function TableComponent() {
-    const rerender = React.useReducer(() => ({}), {})[1];
     const [data, setData] = useState<User[]>([]);
     const [loading, setLoading] = useState(false);
     const [response, setResponse] = useState<"success" | "error" | "idle">();
+    const [page, setPage] = useState(1)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -30,7 +33,15 @@ function TableComponent() {
 
     return (
         <>
-            <MyTable users={data.slice(0,10)} />
+            <MyTable loading={loading} users={handlePagination(page, 8, data)} />
+            <div className="">
+
+                <Pagination
+                    totalItems={data.length}
+                    pageSize={8}
+                    currentPage={page}
+                    onPageChange={setPage}
+                />            </div>
         </>
     );
 }

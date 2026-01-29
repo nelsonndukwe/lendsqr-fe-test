@@ -6,7 +6,7 @@ import Status from "./status";
 
 
 
-const MyTable = ({users}:{users:User[]}) => {
+const MyTable = ({ users, loading }: { users: User[], loading: boolean }) => {
     return (
         <div className={styles.tableCard}>
             <table className={styles.userTable}>
@@ -20,26 +20,31 @@ const MyTable = ({users}:{users:User[]}) => {
 
                 <tbody>
 
-                    {
-                        users.map((user)=>{
-                            return (
-                                <tr key={user.id}>
-                        <td>{user.organization}</td>
-                        <td>{user.username}</td>
-                        <td>{user.email}</td>
-                        <td>{user.phoneNumber}</td>
-                        <td>{user.dateJoined}</td>
-                        <td>
-                           <Status variant={user.status} />
-                        </td>
-                        <td className={styles.actions}>⋮</td>
-                    </tr>
+                    {loading ?
+                        <div className="">Loading</div>
 
-                            )
-                        })
+                        : users && users.length !== 0 ?
+                            users.map((user) => {
+                                return (
+                                    <tr key={user.id}>
+                                        <td>{user.organization}</td>
+                                        <td>{user.username}</td>
+                                        <td>{user.email}</td>
+                                        <td>{user.phoneNumber}</td>
+                                        <td>{user.dateJoined}</td>
+                                        <td>
+                                            <Status variant={user.status} />
+                                        </td>
+                                        <td className={styles.actions}>⋮</td>
+                                    </tr>
+
+                                )
+                            }) :
+                            <div className="">You have no users</div>
+
                     }
-                    
-                
+
+
                 </tbody>
             </table>
         </div>

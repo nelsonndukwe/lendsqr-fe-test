@@ -27,7 +27,7 @@
         tr {
             border-bottom: 1px solid #e5e9f2;
 
-            &:last-child {
+            :last-child {
                 border-bottom: none;
             }
         }
@@ -68,23 +68,24 @@
     font-size: 12px;
     font-weight: 500;
 
-    &.active {
-        background: #f3fcf6;
+    .active {
+        background: rgba(57, 205, 98, 0.1);
         color: #39cd62;
     }
 
-    &.inactive {
-        background: #f5f5f7;
+    .inactive {
+        background: rgba(84, 95, 125, 0.1);
         color: #545f7d;
     }
 
-    &.pending {
-        background: #fff7e5;
+    .pending {
+        background: rgba(233, 178, 0, 0.1);
+
         color: #e9b200;
     }
 
-    &.blacklisted {
-        background: #fde8ec;
+    .blacklisted {
+        background: rgba(228, 3, 59, 0.1);
         color: #e4033b;
     }
 }
@@ -102,6 +103,97 @@
         letter-spacing: 0%;
         vertical-align: bottom;
         text-transform: uppercase;
-        color:#545F7D;
+        color: #545f7d;
+    }
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    color: #6b7280;
+    font-family: "Work Sans";
+    padding: 16px 8px;
+    height: 30px;
+
+    .paginationInfo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        span {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 100%;
+            letter-spacing: 0px;
+        }
+    }
+
+    .paginationSelect {
+        border-radius: 6px;
+        border: none;
+        background: rgba(33, 63, 125, 0.1);
+        padding: 8px 10px;
+        color: #213f7d;
+        font-weight: 500;
+        cursor: pointer;
+        height: 30px;
+        border-radius: 4px;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .paginationControls {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .paginationBtn{
+        background: rgba(33, 63, 125, 0.1) !important;
+        color:#213F7D;
+        width:12px;
+        height:12px;
+        padding: 8px 10px;
+
+    }
+    .paginationBtn,
+    .paginationPage {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        border: none;
+        background: transparent;
+        color: #6b7280;
+        font-weight: 500;
+        cursor: pointer;
+        transition:
+            background 0.2s,
+            color 0.2s;
+
+        :hover:not(:disabled) {
+            background: #1e3a8a;
+            color: #fff;
+        }
+
+        :disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+    }
+
+    .paginationPage {
+        .active {
+            background: #1e3a8a;
+            color: #fff;
+        }
+    }
+
+    .paginationEllipsis {
+        padding: 0 0.25rem;
+        color: #9ca3af;
     }
 }
