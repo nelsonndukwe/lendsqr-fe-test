@@ -1,6 +1,7 @@
 import { userMetrics } from "@/lib/data";
 import styles from "../../scss/page.module.scss";
 import Card from "@/app/components/Card/card";
+import TableComponent from "@/app/components/Table/user-table";
 const usersPage = () => {
     return (
         <div style={{ height: "100vh" }}>
@@ -18,6 +19,9 @@ const usersPage = () => {
                     />
                 ))}
             </div>
+
+
+            <TableComponent />
         </div>
     );
 };
