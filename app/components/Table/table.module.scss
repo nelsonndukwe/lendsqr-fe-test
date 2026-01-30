@@ -19,13 +19,17 @@
         .dropdown {
             position: absolute;
             top: calc(100% + 6px);
-            left: calc(100% - 200px);
-            max-width: 270px;
-            background: red;
+            right: calc(100% - 300px);
+            width: 270px;
             border-radius: 8px;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
             padding: 16px 8px;
             z-index: 20;
+            background: #ffffff;
+            border: 1px solid #545f7d24;
+            box-shadow: 3px 5px 20px 0px #0000000a;
+            border-width: 1px;
+            border-radius: 4px;
         }
         cursor: pointer;
         th {
@@ -238,3 +242,57 @@
     top: 50%;
     transform: translate(-50%, -50%);
 }
+
+
+.container {
+    width: 270px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  
+  .container label {
+    font-size: 14px;
+    color: #545f7d;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  .container input,
+  .container select {
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid #dcdff0;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .reset {
+    flex: 1;
+    background: transparent;
+    border: 1px solid #545f7d;
+    color: #545f7d;
+    border-radius: 6px;
+    height: 40px;
+  }
+  
+  .submit {
+    flex: 1;
+    background: #39cdcc;
+    border: none;
+    color: #fff;
+    border-radius: 6px;
+    height: 40px;
+  }
+  

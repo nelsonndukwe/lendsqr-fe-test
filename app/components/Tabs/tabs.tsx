@@ -13,7 +13,7 @@ type Tab = {
 };
 
 type CustomerTabsProps = {
-    user:User | undefined;
+    user: User | undefined;
     tabs: Tab[];
     activeTab: string;
     onChange: (id: string) => void;
@@ -33,7 +33,7 @@ export function CustomerTabs({
 
             <div className={styles.userProfile}>
                 <div className="">
-                    <Image src={icons.profile} alt="profile" width={100} height={100} />
+                    <Image src={icons.profile} alt="profile" width={100} height={100} loading="eager" />
                 </div>
 
                 <div className="">

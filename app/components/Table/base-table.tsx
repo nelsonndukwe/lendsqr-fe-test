@@ -9,12 +9,13 @@ import { icons } from "@/lib/assets";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Loader from "../Loader/loader";
+import { FilterValues, TableFilter } from "./filter";
 
 
 const MyTable = ({ users, loading }: { users: User[], loading: boolean }) => {
     const [selected, setSelected] = useState("")
     const [openFilter, setOpenFilter] = useState<boolean>(false);
-    const [filters, setFilters] = useState<Record<string, string>>({});
+    const [filters, setFilters] = useState<FilterValues>({});
 
     const setFilter = (key: string, value: string) => {
         setFilters(prev => ({ ...prev, [key]: value }));
@@ -22,7 +23,7 @@ const MyTable = ({ users, loading }: { users: User[], loading: boolean }) => {
     const router = useRouter()
     return (
         <div className={`${styles.tableCard} scroll`}>
-           
+
 
             <table className={styles.userTable}>
                 <thead>
@@ -34,24 +35,30 @@ const MyTable = ({ users, loading }: { users: User[], loading: boolean }) => {
 
                     {openFilter && (
                         <div className={styles.dropdown}>
-                            {["Active", "Inactive", "Pending"].map(status => (
-                                <div
-                                    key={status}
-                                    onClick={() => {
-                                        setFilter("progress", status);
-                                        setOpenFilter(false);
-                                    }}
-                                >
-                                    {status}
-                                </div>
-                            ))}
+                            <TableFilter
+                                values={filters}
+                                onChange={(key, value) =>
+                                    setFilters(prev => ({ ...prev, [key]: value }))
+                                }
+                                onReset={() =>
+                                    setFilters({
+                                        organization: "",
+                                        username: "",
+                                        email: "",
+                                        date: "",
+                                        phone: "",
+                                        status: "",
+                                    })
+                                }
+                                onSubmit={() => console.log("apply filters", filters)}
+                            />
                         </div>
                     )}
                 </thead>
 
                 <tbody>
-              
-                   
+
+
                     {loading ?
                         <div className={styles.loader}>
                             <Loader />
