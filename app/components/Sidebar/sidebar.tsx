@@ -82,6 +82,7 @@ const Sidebar = () => {
                                 <span>{Option.label}</span>
                             </div>
                         )}
+                        
                     />
 
 
