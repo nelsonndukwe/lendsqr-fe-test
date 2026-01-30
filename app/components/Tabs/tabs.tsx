@@ -14,17 +14,18 @@ type Tab = {
 };
 
 type CustomerTabsProps = {
+    user:User | undefined;
     tabs: Tab[];
     activeTab: string;
     onChange: (id: string) => void;
 };
 
 export function CustomerTabs({
+    user,
     tabs,
     activeTab,
     onChange
 }: CustomerTabsProps) {
-    const [user] = useLocalStorage<User>("user", undefined)
 
     return (
 

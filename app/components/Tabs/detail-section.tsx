@@ -22,12 +22,12 @@ export function DetailsSection({ sections }: DetailsSectionProps) {
     return (
         <div className={styles.detailsWrapper}>
             {sections.map((section, index) => (
-                <div key={section.title} className={styles.detailsSection}>
+                <div key={`${section.title}-index`} className={styles.detailsSection}>
                     <p className={styles.c}>{section.title}</p>
 
                     <div className={styles.detailsGrid}>
                         {section.items.map((item, index) => (
-                            <div key={item.label} className={styles.detailItem}>
+                            <div key={`${item.label}-${index}`} className={styles.detailItem}>
                                 <span className={styles.label}>{item.label}</span>
                                 <span className={styles.value}>{item.value}</span>
                                 {/* {section.title === "Guarantors" && index !== section.items.length - 1 && <hr />} */}

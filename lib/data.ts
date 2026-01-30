@@ -171,3 +171,13 @@ export const pageSizeOptions = [
     { label: "20", value: 20 },
     { label: "50", value: 50 },
   ]
+
+
+  export const tabs = [
+    { id: "general", label: "General Details" },
+    { id: "documents", label: "Documents" },
+    { id: "bank", label: "Bank Details" },
+    { id: "loans", label: "Loans" },
+    { id: "savings", label: "Savings" },
+    { id: "system", label: "App and System" },
+];
