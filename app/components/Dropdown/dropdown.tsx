@@ -68,7 +68,7 @@ export function Dropdown<T>({
                 onClick={toggleOpen}
                 type="button"
             >
-                {selected?.label?? placeholder}
+                {selected?.label? selected.label: placeholder}
                 <span className={`${styles.dropdown__arrow} ${open ? styles.active : ""}`}>
                     ▾
                 </span>

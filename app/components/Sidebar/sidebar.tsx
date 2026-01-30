@@ -50,7 +50,7 @@ const Sidebar = () => {
         >
             <div className={styles.sidebarWrapper}>
                 <div
-                    // onClick={toggleSidebar}
+                    onClick={toggleSidebar}
                     className={`${styles.sidebarHeader} ${state ? styles.closed : ""
                         }`}
                 >
@@ -69,7 +69,7 @@ const Sidebar = () => {
                                 height={16}
                                 loading="eager"
                             />
-                            <p>{selectedOrg}</p> <div>
+                            <p>{selectedOrg === "" ? "Switch organization" : selectedOrg}</p> <div>
                                 <GoChevronDown />
                             </div>
                         </div>}
