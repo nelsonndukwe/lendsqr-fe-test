@@ -69,7 +69,7 @@ const Sidebar = () => {
                                 loading="eager"
                             />
                             <p>{selectedOrg === "" ? "Switch organization" : selectedOrg}</p> <div>
-                                <GoChevronDown />
+                                <GoChevronDown className={styles.icon} />
                             </div>
                         </div>}
 

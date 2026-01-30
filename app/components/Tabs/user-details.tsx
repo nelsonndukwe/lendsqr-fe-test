@@ -45,26 +45,24 @@ const UserDetailsPage = () => {
         return data.find((user) => user.username === userId);
     }, [data, userId]);
 
-    return (<div>
-        <div >
-            <div className={styles.heading}>
-                <Link href={`/dashboard/${orgId}/users`} className={styles.arrow}>
-                    <HiArrowLongLeft size={30} />
-                    <span >Back to Users</span>
-                </Link>
+    return (<div className={styles.tabsContainer}>
+        <div className={styles.heading}>
+            <Link href={`/dashboard/${orgId}/users`} className={styles.arrow}>
+                <HiArrowLongLeft size={30} />
+                <span >Back to Users</span>
+            </Link>
 
 
-                <div className={styles.secondaryHeader}>
+            <div className={styles.secondaryHeader}>
 
-                    <p >User Details</p>
+                <p >User Details</p>
 
 
-                    <div className={styles.buttonWrapper}>
-                        <button className={styles.blacklist}>Blacklist User</button>
-                        <button className={styles.activate}>Activate User</button>
-                    </div>
-
+                <div className={styles.buttonWrapper}>
+                    <button className={styles.blacklist}>Blacklist User</button>
+                    <button className={styles.activate}>Activate User</button>
                 </div>
+
             </div>
         </div>
 

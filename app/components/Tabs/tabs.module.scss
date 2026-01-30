@@ -1,3 +1,14 @@
+.tabsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1037px;
+    margin: 0 auto;
+}
+
+
 .customerTabsWrapper {
     display: flex;
     flex-direction: column;
@@ -10,6 +21,10 @@
     border-width: 1px;
     border-radius: 4px;
     width: 100%;
+
+    @media (min-width: 1024px) {
+        width: 100%;
+    }
 
     .userProfile {
         display: flex;
@@ -208,8 +223,8 @@
     }
 }
 
-
-.heading{
+.heading {
+    width: 100%;
 
     .arrow {
         display: flex;
@@ -217,43 +232,39 @@
         gap: 10px;
         align-items: center;
     }
-    
-    
-    
 
     .secondaryHeader {
         width: 100%;
         margin-bottom: 16px;
-    
-    
+
         &.secondaryHeader {
             width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 4px;
-    
+
             p {
                 font-weight: 500;
                 font-size: 24px;
                 line-height: 100%;
                 letter-spacing: 0px;
             }
-    
+
             .buttonWrapper {
                 display: flex;
-    
+
                 gap: 10px;
                 align-items: center;
-    
+
                 button {
                     width: 170px;
                     height: 40px;
-    
+
                     border-width: 1px;
                     opacity: 1;
                     border-radius: 8px;
-    
+
                     font-family: Work Sans;
                     font-weight: 600;
                     font-size: 14px;
@@ -262,7 +273,7 @@
                     text-align: center;
                     text-transform: uppercase;
                 }
-    
+
                 .blacklist {
                     border: 1px solid #e4033b;
                     max-width: 170px;
@@ -270,7 +281,7 @@
                     border-radius: 8px;
                     color: #e4033b;
                 }
-    
+
                 .activate {
                     border: 1px solid #39cdcc;
                     max-width: 170px;
@@ -281,7 +292,4 @@
             }
         }
     }
-    
 }
-
-

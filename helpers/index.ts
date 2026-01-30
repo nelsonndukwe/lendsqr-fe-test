@@ -80,7 +80,7 @@ export const formatGeneralDetails = (user: User | undefined): DetailSection[] =>
                 { label: "Sector of Employment", value: user.educationAndEmployment.sectorOfEmployment },
                 { label: "Duration of Employment", value: user.educationAndEmployment.durationOfEmployment },
                 { label: "Office Email", value: user.educationAndEmployment.officeEmail },
-                { label: "Monthly Income", value: `${user.educationAndEmployment.monthlyIncome.min} - ${user.educationAndEmployment.monthlyIncome.max}` },
+                { label: "Monthly Income", value: `NGN${Number(user.educationAndEmployment.monthlyIncome.min).toLocaleString()} - NGN${Number(user.educationAndEmployment.monthlyIncome.max).toLocaleString()}` },
                 { label: "Loan Repayment", value: user.educationAndEmployment.loanRepayment },
             ]
         },
