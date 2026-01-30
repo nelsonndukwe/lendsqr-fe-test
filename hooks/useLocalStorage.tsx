@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 type SetValue<T> = T | ((val: T | undefined) => T);
 
@@ -12,32 +12,41 @@ function useLocalStorage<T>(
     () => void,
     (index: number) => string | null
 ] {
-    const [storedValue, setStoredValue] = useState<T | undefined>(initialValue);
-
-    const [hydrated, setHydrated] = useState(false);
-
-    useEffect(() => {
+    // Use lazy initialization to read from localStorage only once during initial render
+    const [storedValue, setStoredValue] = useState<T | undefined>(() => {
         try {
             const item = window.localStorage.getItem(key);
             if (item !== null) {
-                setValue(JSON.parse(item));
+                return JSON.parse(item);
             }
+            return initialValue;
         } catch (error) {
             console.error(error);
-        } finally {
-            setHydrated(true);
+            return initialValue;
         }
-    }, [key]);
+    });
+
+    const skipSyncRef = useRef(false);
+    const isInitialMount = useRef(true);
 
     useEffect(() => {
-        if (!hydrated) return;
+        // Skip sync on initial mount since lazy initialization already handled it
+        if (isInitialMount.current) {
+            isInitialMount.current = false;
+            return;
+        }
+
+        if (skipSyncRef.current) {
+            skipSyncRef.current = false;
+            return;
+        }
 
         try {
             window.localStorage.setItem(key, JSON.stringify(storedValue));
         } catch (error) {
             console.error(error);
         }
-    }, [key, storedValue, hydrated]);
+    }, [key, storedValue]);
 
     const setValue = (value: SetValue<T>) => {
         try {
@@ -51,6 +60,7 @@ function useLocalStorage<T>(
 
     const removeItem = () => {
         try {
+            skipSyncRef.current = true;
             window.localStorage.removeItem(key);
             setStoredValue(initialValue);
         } catch (error) {
@@ -60,6 +70,7 @@ function useLocalStorage<T>(
 
     const clearStorage = () => {
         try {
+            skipSyncRef.current = true;
             window.localStorage.clear();
             setStoredValue(initialValue);
         } catch (error) {

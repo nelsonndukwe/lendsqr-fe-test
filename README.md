@@ -154,6 +154,32 @@ lendsqr-fe-test/
    npm run lint
    ```
 
+6. **Test**
+
+   ```bash
+   npm install   # if not already (adds Jest + React Testing Library)
+   npm test      # run unit tests once
+   npm run test:watch   # run tests in watch mode
+   ```
+
+---
+
+## Testing
+
+Unit tests use **Jest** and **React Testing Library**, with both **positive** and **negative** scenarios where applicable.
+
+| Target | Location | What’s tested |
+|--------|----------|----------------|
+| **Helpers** | `__tests__/helpers/index.test.ts` | `handlePagination` (pages, empty data, invalid page/limit), `getPaginationRange` (range, ellipsis, sort), `formatGeneralDetails` (sections, undefined user, guarantors) |
+| **Hooks** | `__tests__/hooks/useDebounce.test.tsx` | Initial value, debounced update after delay, rapid changes, zero/empty edge cases |
+| **Hooks** | `__tests__/hooks/useLocalStorage.test.tsx` | Get/set/remove/clear, initial value, invalid JSON, `getKey`, function updater |
+| **Actions** | `__tests__/actions/sign-in.test.ts` | `getUsers` success (returns data), empty response, network error, 401/403 rejection |
+| **Components** | `__tests__/components/Status.test.tsx` | Renders all variants (Active, Inactive, Pending, Blacklisted) |
+| **Components** | `__tests__/components/Card.test.tsx` | Label, count, locale formatting, image src/alt |
+| **Components** | `__tests__/components/DetailsSection.test.tsx` | Sections and items, empty sections, wrong content not shown |
+
+Config: `jest.config.mjs` (uses `next/jest`), `jest.setup.mjs` (adds `@testing-library/jest-dom`).
+
 ---
 
 ## Summary
