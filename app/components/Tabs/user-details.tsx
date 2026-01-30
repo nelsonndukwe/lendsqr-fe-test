@@ -48,7 +48,7 @@ const UserDetailsPage = () => {
     return (<div className={styles.tabsContainer}>
         <div className={styles.heading}>
             <Link href={`/dashboard/${orgId}/users`} className={styles.arrow}>
-                <HiArrowLongLeft size={30} />
+                <HiArrowLongLeft size={25} />
                 <span >Back to Users</span>
             </Link>
 

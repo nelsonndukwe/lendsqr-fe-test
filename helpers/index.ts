@@ -1,3 +1,4 @@
+import { FilterValues } from "@/app/components/Table/filter";
 import { DetailSection } from "@/app/components/Tabs/detail-section";
 import { User } from "@/types";
 
@@ -124,4 +125,59 @@ export const formatGeneralDetails = (user: User | undefined): DetailSection[] =>
 }
 
 
-export const random =( Math.random() * 5 ) + 1
+export const random = (Math.random() * 5) + 1
+
+
+
+
+export const filterUsers = (
+    users: User[],
+    filters: FilterValues
+): User[] => {
+    return users.filter(user => {
+
+        if (
+            filters.organization &&
+            user.organization !== filters.organization
+        ) {
+            return false;
+        }
+
+        if (
+            filters.username && filters.username
+                .toLowerCase()
+                .includes(filters.username.toLowerCase())
+        ) {
+            return false;
+        }
+
+        if (
+            filters.email &&
+            !user.email.toLowerCase().includes(filters.email.toLowerCase())
+        ) {
+            return false;
+        }
+
+        if (
+            filters.phone &&
+            !user.phoneNumber.includes(filters.phone)
+        ) {
+            return false;
+        }
+
+        if (filters.date) {
+            const userDate = new Date(user.status);
+            const filterDate = new Date(filters.date);
+
+            if (userDate.toDateString() !== filterDate.toDateString()) {
+                return false;
+            }
+        }
+
+        if (filters.status && user.status !== filters.status) {
+            return false;
+        }
+
+        return true;
+    });
+};

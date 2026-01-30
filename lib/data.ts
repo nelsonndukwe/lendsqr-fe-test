@@ -152,6 +152,15 @@ export const organizations = [
     { value: "paystack", label: "Paystack" },
 ];
 
+export const status = [
+    { value: "active", label: "Active" },
+    { value: "inactive", label: "Inactive" },
+    { value: "pending", label: "Pending" },
+    { value: "blacklisted", label: "Blacklisted" },
+
+]
+
+
 export const userMetrics = [
     { label: "Users", count: 2453, icon: icons.users },
     { label: "Active Users", count: 2453, icon: icons.activeUser },

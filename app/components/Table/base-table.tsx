@@ -3,23 +3,37 @@ import { User } from "@/types";
 import { header } from "./columns";
 import styles from "./table.module.scss";
 import Status from "./status";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Dropdown } from "../Dropdown/dropdown";
 import { icons } from "@/lib/assets";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Loader from "../Loader/loader";
 import { FilterValues, TableFilter } from "./filter";
+import { filterUsers } from "@/helpers";
 
 
 const MyTable = ({ users, loading }: { users: User[], loading: boolean }) => {
     const [selected, setSelected] = useState("")
     const [openFilter, setOpenFilter] = useState<boolean>(false);
-    const [filters, setFilters] = useState<FilterValues>({});
+    const [filteredUsers, setFilteredUsers] = useState<User[]>(users)
+    const [filters, setFilters] = useState<FilterValues>({
+        organization: "",
+        username: "",
+        email: "",
+        date: "",
+        phone: "",
+        status: "",
+    });
 
-    const setFilter = (key: string, value: string) => {
-        setFilters(prev => ({ ...prev, [key]: value }));
-    };
+    const handleFilter = () => {
+        const filter = filterUsers(users, filters)
+        setFilteredUsers(filter)
+        setOpenFilter(false)
+    }
+
+
+
     const router = useRouter()
     return (
         <div className={`${styles.tableCard} scroll`}>
@@ -50,7 +64,7 @@ const MyTable = ({ users, loading }: { users: User[], loading: boolean }) => {
                                         status: "",
                                     })
                                 }
-                                onSubmit={() => console.log("apply filters", filters)}
+                                onSubmit={() => handleFilter()}
                             />
                         </div>
                     )}
@@ -64,8 +78,8 @@ const MyTable = ({ users, loading }: { users: User[], loading: boolean }) => {
                             <Loader />
                         </div>
 
-                        : users && users.length !== 0 ?
-                            users.map((user) => {
+                        : filteredUsers && filteredUsers.length !== 0 ?
+                            filteredUsers.map((user) => {
                                 return (
                                     <tr key={user.id}>
                                         <td>{user.organization}</td>
@@ -105,7 +119,12 @@ const MyTable = ({ users, loading }: { users: User[], loading: boolean }) => {
 
                                 )
                             }) :
-                            <div className="">You have no users</div>
+                            <tr>
+                                <td>
+                                    <div className={styles.empty}>You have no users</div>
+                                </td>
+
+                            </tr>
 
                     }
 
