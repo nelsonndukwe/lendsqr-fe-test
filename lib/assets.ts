@@ -41,9 +41,9 @@ export const icons = {
     blackListUser: "/icons/blacklist-user.svg",
     viewUser: "/icons/view-users.svg",
 
-favicon:"/icons/favicon.svg"
+favicon:"/icons/favicon.svg",
 
-
+profile:"/icons/profile.svg"
 
 }
 

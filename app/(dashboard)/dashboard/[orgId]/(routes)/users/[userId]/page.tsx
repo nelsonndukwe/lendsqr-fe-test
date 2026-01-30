@@ -1,7 +1,11 @@
-import React from "react";
+import UserDetailsPage from "@/app/components/Tabs/user-details";
 
 const UserPage = () => {
-  return <div>UserPage</div>;
+    return (
+        <UserDetailsPage />
+    )
 };
 
 export default UserPage;
+
+
