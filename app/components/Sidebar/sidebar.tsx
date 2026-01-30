@@ -50,7 +50,6 @@ const Sidebar = () => {
         >
             <div className={styles.sidebarWrapper}>
                 <div
-                    onClick={toggleSidebar}
                     className={`${styles.sidebarHeader} ${state ? styles.closed : ""
                         }`}
                 >
@@ -86,7 +85,8 @@ const Sidebar = () => {
                     />
 
 
-                    <Link href={""} className={styles.homeLink}>
+                    <Link onClick={toggleSidebar}
+                        href={""} className={styles.homeLink}>
                         <Image
                             src={icons.dashboard}
                             alt="icon"
