@@ -14,7 +14,7 @@ const apiClient = axios.create({
 apiClient.interceptors.request.use(
   (config) => {
     if (token) {
-      config.headers["Authorization"] = `Bearer ${token}`; // Attach the auth token to every request
+      config.headers["Authorization"] = `Bearer ${token}`; 
     }
     return config;
   },
