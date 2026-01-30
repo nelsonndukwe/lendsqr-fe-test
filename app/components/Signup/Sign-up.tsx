@@ -15,7 +15,7 @@ const Signup = () => {
     const [password, setPassword] = useState<string>("");
     const [response, setResponse] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(false);
-    const [_, setUser] = useLocalStorage<User | null>("user", null);
+    const [_, setUser] = useLocalStorage<User | undefined>("user", undefined);
     const router = useRouter();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

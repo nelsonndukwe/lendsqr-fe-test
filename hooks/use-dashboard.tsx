@@ -17,14 +17,13 @@ export const useDashboardState = () => {
             open: false,
             openMobile: false,
         }
-    );
+    )
 
-    // Detect screen size safely
     useEffect(() => {
         const handleResize = () => {
             window.addEventListener("resize", () => {
                 const isMobile = window.innerWidth <= 768;
-                setState((prev) => ({
+                setState((prev:DashboardState) => ({
                     ...prev,
                     isMobile,
                 }));
@@ -48,7 +47,6 @@ export const useDashboardState = () => {
         return () => window.removeEventListener("resize", checkScreen);
     }, []);
 
-    /* ===== Sidebar controls ===== */
 
     const toggleSidebar = () => {
         setState((prev) => ({

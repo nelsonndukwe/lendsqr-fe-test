@@ -1,6 +1,5 @@
 import { ParamValue } from "next/dist/server/request/params";
 import { icons } from "./assets";
-import { DetailSection } from "@/app/components/Tabs/detail-section";
 
 export const getRoutes = (id: ParamValue, pathName: string) => {
     const routes = [

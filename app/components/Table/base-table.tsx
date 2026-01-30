@@ -7,7 +7,6 @@ import { useState } from "react";
 import { Dropdown } from "../Dropdown/dropdown";
 import { icons } from "@/lib/assets";
 import Image from "next/image";
-import useLocalStorage from "@/hooks/useLocalStorage";
 import { useRouter } from "next/navigation";
 import Loader from "../Loader/loader";
 
@@ -15,7 +14,6 @@ import Loader from "../Loader/loader";
 
 const MyTable = ({ users, loading }: { users: User[], loading: boolean }) => {
     const [selected, setSelected] = useState("")
-    const [user] = useLocalStorage<User | undefined>("user", undefined);
     const router = useRouter()
     return (
         <div className={`${styles.tableCard} scroll`}>

@@ -9,7 +9,6 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import useLocalStorage from "@/hooks/useLocalStorage";
 import { User } from "@/types";
-import { IconType } from "react-icons";
 
 
 const Navbar = () => {

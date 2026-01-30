@@ -1,17 +1,17 @@
 import { useEffect, useState, useRef } from "react";
 
-type SetValue<T> = T | ((val: T | undefined) => T);
+type SetValue<T> = T | ((val: T) => T);
 
 function useLocalStorage<T>(
     key: string,
     initialValue?: T
 ): [
-    T | undefined,
-    (value: SetValue<T>) => void,
-    () => void,
-    () => void,
-    (index: number) => string | null
-] {
+        T | undefined,
+        (value: SetValue<T>) => void,
+        () => void,
+        () => void,
+        (index: number) => string | null
+    ] {
     // Use lazy initialization to read from localStorage only once during initial render
     const [storedValue, setStoredValue] = useState<T | undefined>(() => {
         try {
@@ -51,7 +51,7 @@ function useLocalStorage<T>(
     const setValue = (value: SetValue<T>) => {
         try {
             const valueToStore =
-                value instanceof Function ? value(storedValue) : value;
+                value instanceof Function ? value(storedValue as T) : value;
             setStoredValue(valueToStore);
         } catch (error) {
             console.error(error);
