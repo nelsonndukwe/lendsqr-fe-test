@@ -69,37 +69,79 @@
     }
 }
 
-.detailsSection {
+.detailsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
     margin-top: 24px;
+    width: 1037px;
+    top: 530px;
+    left: 343px;
+    opacity: 1;
+    border-radius: 4px;
+    background: #ffffff;
+    padding: 8px 16px;
+    box-shadow: 3px 5px 20px 0px #0000000a;
+    border: 1px solid #213f7d0f;
+    padding: 16px;
 
-    .sectionTitle {
-        font-size: 14px;
-        font-weight: 600;
-        margin-bottom: 16px;
-        color: #111827;
-    }
+    //font
+    font-family: "Work Sans";
 
-    .detailsGrid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
-    }
-
-    .detailItem {
+    .detailsSection {
         display: flex;
         flex-direction: column;
-        gap: 4px;
+        gap: 16px;
 
-        .label {
-            font-size: 12px;
-            color: #6b7280;
-            text-transform: uppercase;
+        .title {
+            margin: 8px 0;
         }
 
-        .value {
-            font-size: 14px;
-            color: #111827;
+        .sectionTitle {
+            margin-bottom: 16px;
+            color: #213f7d;
+            font-family: Work Sans;
             font-weight: 500;
+            font-size: 16px;
+            line-height: 100%;
+            letter-spacing: 0px;
+        }
+
+        .detailsGrid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .detailItem {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+
+            .label {
+                font-size: 12px;
+                color: #6b7280;
+                text-transform: uppercase;
+                font-family: Work Sans;
+                font-weight: 400;
+                font-size: 12px;
+                line-height: 100%;
+                letter-spacing: 0px;
+                text-transform: uppercase;
+            }
+
+            .value {
+                font-size: 14px;
+                color: #111827;
+                font-weight: 500;
+            }
+        }
+
+        hr {
+            width: 977px;
+            border-width: 1px;
+            opacity: 0.1;
+            border: 1px solid #213f7d;
         }
     }
 }

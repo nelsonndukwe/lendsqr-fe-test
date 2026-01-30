@@ -3,6 +3,11 @@ import styles from "./tabs.module.scss"
 import { icons } from "@/lib/assets";
 import useLocalStorage from "@/hooks/useLocalStorage";
 import { User } from "@/types";
+import { FaRegStar } from "react-icons/fa6";
+
+import { FaStar } from "react-icons/fa6";
+import { random } from "@/helpers";
+
 type Tab = {
     id: string;
     label: string;
@@ -20,6 +25,7 @@ export function CustomerTabs({
     onChange
 }: CustomerTabsProps) {
     const [user] = useLocalStorage<User>("user", undefined)
+
     return (
 
         <div className={styles.customerTabsWrapper}>
@@ -39,7 +45,15 @@ export function CustomerTabs({
 
                 <div className={styles.tier}>
                     <p className={styles.title}>User’s Tier</p>
-                    <p className={styles.subtitle}>O</p>
+                    <p className={styles.subtitle}>
+
+                        {Array.from({ length: random }).map((_, index) => (
+                            <FaStar key={`filled-${index}`} color="#E9B200" />
+                        ))}
+
+                        {Array.from({ length: 5 - random }).map((_, index) => (
+                            <FaRegStar key={`outline-${index}`} color="#E9B200" />
+                        ))}                    </p>
                 </div>
 
                 <hr></hr>

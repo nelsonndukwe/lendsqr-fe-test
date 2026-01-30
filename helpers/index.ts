@@ -1,3 +1,4 @@
+import { DetailSection } from "@/app/components/Tabs/detail-section";
 import { User } from "@/types";
 
 export const handlePagination = (
@@ -50,3 +51,77 @@ export const getPaginationRange = (
         ? [...numbers.slice(0, 1), ...uniquePages.slice(1)]
         : [...numbers, ...dots]
 }
+
+
+export const formatGeneralDetails = (user: User | undefined): DetailSection[] => {
+
+    if (!user) return []
+
+    const formattedData = [
+        {
+            title: "Personal Information",
+            items: [
+                { label: "Full Name", value: user.fullName },
+                { label: "Phone Number", value: user.phoneNumber },
+                { label: "Email Address", value: user.email },
+                { label: "BVN", value: user.personalInformation.bvn },
+                { label: "Gender", value: user.personalInformation.gender },
+                { label: "Marital Status", value: user.personalInformation.maritalStatus },
+                { label: "Children", value: user.personalInformation.children },
+                { label: "Type of Residence", value: user.personalInformation.typeOfResidence },
+            ]
+        },
+
+        {
+            title: "Education and Employment",
+            items: [
+                { label: "Level of Education", value: user.educationAndEmployment.levelOfEducation },
+                { label: "Employment Status", value: user.educationAndEmployment.employmentStatus },
+                { label: "Sector of Employment", value: user.educationAndEmployment.sectorOfEmployment },
+                { label: "Duration of Employment", value: user.educationAndEmployment.durationOfEmployment },
+                { label: "Office Email", value: user.educationAndEmployment.officeEmail },
+                { label: "Monthly Income", value: `${user.educationAndEmployment.monthlyIncome.min} - ${user.educationAndEmployment.monthlyIncome.max}` },
+                { label: "Loan Repayment", value: user.educationAndEmployment.loanRepayment },
+            ]
+        },
+
+        {
+            title: "Socials",
+            items: [
+                { label: "Twitter", value: user.socials.twitter },
+                { label: "Facebook", value: user.socials.facebook },
+                { label: "instagram", value: user.socials.instagram },
+
+            ]
+        },
+
+        {
+            title: "Guarantors",
+            items: user.guarantors.flatMap((guarantor) => [
+                {
+                    label: `Full Name`,
+                    value: guarantor.fullName
+                },
+                {
+                    label: `Phone number`,
+                    value: guarantor.phoneNumber
+                },
+                {
+                    label: `Email address`,
+                    value: guarantor.emailAddress
+                },
+                {
+                    label: `Relationship`,
+                    value: guarantor.relationship
+                },
+            ])
+        }
+
+
+    ]
+    return formattedData
+
+}
+
+
+export const random =( Math.random() * 5 ) + 1

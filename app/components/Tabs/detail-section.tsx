@@ -1,10 +1,11 @@
 
+import { ReactNode } from "react";
 import styles from "./tabs.module.scss"
 
 
 export type DetailItem = {
     label: string;
-    value: React.ReactNode;
+    value: ReactNode;
 };
 
 export type DetailSection = {
@@ -20,18 +21,22 @@ type DetailsSectionProps = {
 export function DetailsSection({ sections }: DetailsSectionProps) {
     return (
         <div className={styles.detailsWrapper}>
-            {sections.map(section => (
+            {sections.map((section, index) => (
                 <div key={section.title} className={styles.detailsSection}>
-                    <h3 className={styles.sectionTitle}>{section.title}</h3>
+                    <p className={styles.c}>{section.title}</p>
 
                     <div className={styles.detailsGrid}>
-                        {section.items.map(item => (
+                        {section.items.map((item, index) => (
                             <div key={item.label} className={styles.detailItem}>
-                                <span className="label">{item.label}</span>
-                                <span className="value">{item.value}</span>
+                                <span className={styles.label}>{item.label}</span>
+                                <span className={styles.value}>{item.value}</span>
+                                {/* {section.title === "Guarantors" && index !== section.items.length - 1 && <hr />} */}
+
                             </div>
                         ))}
+
                     </div>
+                    {index !== sections.length - 1 && <hr />}
                 </div>
             ))}
         </div>

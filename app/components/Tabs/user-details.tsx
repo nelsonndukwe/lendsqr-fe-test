@@ -3,7 +3,9 @@
 import { useState } from "react";
 import { CustomerTabs } from "./tabs"
 import { DetailsSection } from "./detail-section";
-import { generalDetails } from "@/lib/data";
+import { formatGeneralDetails } from "@/helpers";
+import useLocalStorage from "@/hooks/useLocalStorage";
+import { User } from "@/types";
 
 
 const tabs = [
@@ -17,6 +19,9 @@ const tabs = [
 
 const UserDetailsPage = () => {
     const [activeTab, setActiveTab] = useState("general");
+    const [user] = useLocalStorage<User>("user", undefined)
+
+
     return (<div><div className=""></div>
 
 
@@ -28,7 +33,7 @@ const UserDetailsPage = () => {
         />
 
         {activeTab === "general" && (
-            <DetailsSection sections={generalDetails} />
+            <DetailsSection sections={formatGeneralDetails(user as User)} />
         )}
 
 
