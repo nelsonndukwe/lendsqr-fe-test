@@ -11,23 +11,47 @@ import { useRouter } from "next/navigation";
 import Loader from "../Loader/loader";
 
 
-
 const MyTable = ({ users, loading }: { users: User[], loading: boolean }) => {
     const [selected, setSelected] = useState("")
+    const [openFilter, setOpenFilter] = useState<boolean>(false);
+    const [filters, setFilters] = useState<Record<string, string>>({});
+
+    const setFilter = (key: string, value: string) => {
+        setFilters(prev => ({ ...prev, [key]: value }));
+    };
     const router = useRouter()
     return (
         <div className={`${styles.tableCard} scroll`}>
+           
+
             <table className={styles.userTable}>
                 <thead>
                     <tr>
-                        {header().map((item) => (
+                        {header(openFilter, setOpenFilter).map((item) => (
                             <th key={item.accessorKey}>{item.header()}</th>
                         ))}
                     </tr>
+
+                    {openFilter && (
+                        <div className={styles.dropdown}>
+                            {["Active", "Inactive", "Pending"].map(status => (
+                                <div
+                                    key={status}
+                                    onClick={() => {
+                                        setFilter("progress", status);
+                                        setOpenFilter(false);
+                                    }}
+                                >
+                                    {status}
+                                </div>
+                            ))}
+                        </div>
+                    )}
                 </thead>
 
                 <tbody>
-
+              
+                   
                     {loading ?
                         <div className={styles.loader}>
                             <Loader />

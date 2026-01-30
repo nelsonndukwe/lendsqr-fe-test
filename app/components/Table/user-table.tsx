@@ -6,7 +6,6 @@ import { User } from "@/types";
 import MyTable from "./base-table";
 import { handlePagination } from "@/helpers";
 import Pagination from "./pagination";
-import loading from '../../loading';
 
 function TableComponent() {
     const [data, setData] = useState<User[]>([]);

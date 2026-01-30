@@ -1,7 +1,6 @@
 import Image from "next/image";
 import styles from "./tabs.module.scss"
 import { icons } from "@/lib/assets";
-import useLocalStorage from "@/hooks/useLocalStorage";
 import { User } from "@/types";
 import { FaRegStar } from "react-icons/fa6";
 

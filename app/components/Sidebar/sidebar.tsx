@@ -32,12 +32,7 @@ const Sidebar = () => {
 
     const routes = getRoutes(orgId, pathName);
 
-    function handleChange(event: ChangeEvent<HTMLSelectElement>) {
-        const target = event.target as HTMLSelectElement;
-
-        setSelectedOrg(target.value);
-    }
-
+ 
     function handleLogout() {
         clearStorage();
 
