@@ -44,7 +44,8 @@
 
     tbody {
         position: relative;
-        height: 200px;
+        max-height: 200px;
+        height:100%;
 
         tr {
             border-bottom: 1px solid #e5e9f2;
