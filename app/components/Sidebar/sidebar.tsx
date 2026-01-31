@@ -28,11 +28,12 @@ const Sidebar = () => {
         useLocalStorage("user", null);
     const pathName = usePathname();
     const { orgId } = useParams();
-    const state = isMobile ? true : open;
+    const state = isMobile ? true : open
+
 
     const routes = getRoutes(orgId, pathName);
 
- 
+
     function handleLogout() {
         clearStorage();
 
@@ -77,7 +78,7 @@ const Sidebar = () => {
                                 <span>{Option.label}</span>
                             </div>
                         )}
-                        
+
                     />
 
 

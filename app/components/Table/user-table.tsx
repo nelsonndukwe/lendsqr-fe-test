@@ -31,17 +31,19 @@ function TableComponent() {
     }, []);
 
     return (
-        <>
+        <div >
             <MyTable loading={loading} users={handlePagination(page, 8, data)} />
-            {!loading &&
+            {
+                !loading &&
 
                 <Pagination
                     totalItems={data.length}
                     pageSize={8}
                     currentPage={page}
                     onPageChange={setPage}
-                />}
-        </>
+                />
+            }
+        </div >
     );
 }
 
