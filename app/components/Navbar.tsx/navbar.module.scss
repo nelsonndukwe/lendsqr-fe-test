@@ -86,10 +86,20 @@
         margin-right: 50px;
         cursor: pointer;
 
+        @media(max-width:767px){
+            gap: 20px;
+
+        }
+
         .bellIcon {
             display: flex;
             align-items: center;
             gap: 30px;
+            @media(max-width:767px){
+                gap: 15px;
+    
+            }
+    
         }
 
         p {
