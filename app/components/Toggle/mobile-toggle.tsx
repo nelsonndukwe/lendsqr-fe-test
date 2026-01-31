@@ -19,7 +19,7 @@ const MobileToggle = () => {
 
     return (
         <button
-            onClick={() => toggleMobileSidebar()}
+            onClick={() => toggleSidebar()}
             className={styles.floatingButton}
         >
             <LuColumns2 size={24} />
