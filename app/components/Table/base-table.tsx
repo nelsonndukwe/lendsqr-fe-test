@@ -3,7 +3,7 @@ import { User } from "@/types";
 import { header } from "./columns";
 import styles from "./table.module.scss";
 import Status from "./status";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Dropdown } from "../Dropdown/dropdown";
 import { icons } from "@/lib/assets";
 import Image from "next/image";
@@ -26,13 +26,15 @@ const MyTable = ({ users, loading }: { users: User[], loading: boolean }) => {
         status: "",
     });
 
-    const handleFilter = () => {
-        const filter = filterUsers(users, filters)
-        setFilteredUsers(filter)
-        setOpenFilter(false)
-    }
-
-
+    useEffect(() => {
+        setFilteredUsers(users);
+      }, [users]);
+      
+      const handleFilter = () => {
+        setFilteredUsers(filterUsers(users, filters));
+        setOpenFilter(false);
+      };
+      
 
     const router = useRouter()
     return (
