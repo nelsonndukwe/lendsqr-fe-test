@@ -19,12 +19,10 @@ export const useDashboardState = () => {
         }
     )
 
-
-
     useEffect(() => {
         const handleResize = () => {
             window.addEventListener("resize", () => {
-                const isMobile = window.innerWidth <= 768;
+                const isMobile = window.innerWidth <= 767;
                 setState((prev:DashboardState) => ({
                     ...prev,
                     isMobile,
@@ -36,18 +34,6 @@ export const useDashboardState = () => {
 
         return () => window.removeEventListener("resize", handleResize);
     }, [setState]);
-
-    useEffect(() => {
-        const checkScreen = () => {
-            const isMobile = window.innerWidth <= 768;
-            setState((prev) => ({
-                ...prev,
-                isMobile,
-            }));
-        };
-        checkScreen();
-        return () => window.removeEventListener("resize", checkScreen);
-    }, []);
 
 
     const toggleSidebar = () => {
