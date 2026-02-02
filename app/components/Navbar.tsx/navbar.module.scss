@@ -114,6 +114,11 @@
             text-decoration-thickness: 0%;
             font-family: "Work Sans", sans-serif;
 
+            @media(max-width:767px){
+                display: none;
+    
+            }
+
         }
 
         .profileInfo {

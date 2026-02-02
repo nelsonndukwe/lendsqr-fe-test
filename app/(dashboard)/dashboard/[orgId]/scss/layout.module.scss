@@ -8,7 +8,6 @@
     .childrenWrapper {
         position: relative;
         padding: 10px 36px;
-        height: 100%;
         width: 100%;
         overflow: auto;
         background: #fbfbfb;
@@ -16,6 +15,7 @@
 
         @media (max-width: 768px) {
             padding: 4px;
+            height:100%;
         }
     }
 

@@ -4,15 +4,16 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 1037px;
     margin: 0 auto;
+
+
 }
 
 .customerTabsWrapper {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    max-width: 1037px;
+    width: 100%;
     min-height: 210px;
     background: #ffffff;
     border: 1px solid #213f7d0f;
@@ -128,10 +129,7 @@
     flex-direction: column;
     gap: 16px;
     margin-top: 24px;
-    max-width: 1037px;
     width: 100%;
-    top: 530px;
-    left: 343px;
     opacity: 1;
     border-radius: 4px;
     background: #ffffff;

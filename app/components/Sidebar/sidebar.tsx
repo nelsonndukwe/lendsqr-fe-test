@@ -1,6 +1,5 @@
 "use client";
 
-import { useDashboardState } from "@/hooks/use-dashboard";
 import { getRoutes, organizations } from "@/lib/data";
 import Image from "next/image";
 import styles from "./sidebar.module.scss";
@@ -35,7 +34,6 @@ const Sidebar = () => {
         throw new Error("useDashboard must be used inside DashboardProvider");
     }
 
-console.log({dashboardContext})
     const isDesktopCollapsed = !dashboardContext.isMobile && dashboardContext.open;
     const collapsed = isDesktopCollapsed;
     const isMobileSidebarOpen = dashboardContext.isMobile && dashboardContext.openMobile
