@@ -1,0 +1,51 @@
+.skeletonRow td {
+    padding: 12px 8px;
+  }
+  
+  .skeleton {
+    height: 14px;
+    width: 100%;
+    border-radius: 4px;
+    background: linear-gradient(
+      90deg,
+      gray 25%,
+      #f5f5f5 37%,
+      gray 63%
+    );
+    background-size: 400% 100%;
+    animation: shimmer 1.4s ease infinite;
+  }
+  
+  .skeletonBadge {
+    height: 20px;
+    width: 70px;
+    border-radius: 12px;
+    background: linear-gradient(
+        90deg,
+        #e3e6eb 25%,
+        #f2f4f7 37%,
+        #e3e6eb 63%
+      );
+      
+    background-size: 400% 100%;
+    animation: shimmer 1.4s ease infinite;
+  }
+  
+  .skeletonAction {
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: 0 0;
+    }
+  }
+  
+
+  

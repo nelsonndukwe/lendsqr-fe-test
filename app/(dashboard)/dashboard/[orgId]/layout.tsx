@@ -16,6 +16,7 @@ export default function SetupLayout({
                 <div className={styles.layoutWrapper}>
                     <Sidebar />
 
+
                     <ToggleSideBar />
                     <div className={styles.childrenWrapper}>{children}</div>
                 </div>

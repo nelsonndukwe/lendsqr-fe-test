@@ -9,6 +9,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import useLocalStorage from "@/hooks/useLocalStorage";
 import { User } from "@/types";
+import Link from "next/link";
 
 
 const Navbar = () => {
@@ -19,7 +20,7 @@ const Navbar = () => {
     return (
         <div className={styles.parentWrapper}>
             <div className={styles.logoWrapper}>
-                <div className={styles.logo}>
+                <Link href={`/dashboard/${user?.id}/users`} className={styles.logo}>
                     <Image
                         src={icons.miniLogo}
                         alt="logo"
@@ -27,7 +28,7 @@ const Navbar = () => {
                         height={30}
                         loading="eager"
                     />
-                </div>
+                </Link>
 
                 <div className={styles.searchBar}>
                     <input type="text" placeholder="Search for anything" />

@@ -3,14 +3,14 @@ import { User } from "@/types";
 import { header } from "./columns";
 import styles from "./table.module.scss";
 import Status from "./status";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Dropdown } from "../Dropdown/dropdown";
 import { icons } from "@/lib/assets";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import Loader from "../Loader/loader";
 import { FilterValues, TableFilter } from "./filter";
 import { filterUsers } from "@/helpers";
+import TableSkeleton from "../skeleton/table.skeleton";
 
 
 const MyTable = ({ users, loading }: { users: User[], loading: boolean }) => {
@@ -28,13 +28,13 @@ const MyTable = ({ users, loading }: { users: User[], loading: boolean }) => {
 
     useEffect(() => {
         setFilteredUsers(users);
-      }, [users]);
-      
-      const handleFilter = () => {
+    }, [users]);
+
+    const handleFilter = () => {
         setFilteredUsers(filterUsers(users, filters));
         setOpenFilter(false);
-      };
-      
+    };
+
 
     const router = useRouter()
     return (
@@ -76,9 +76,8 @@ const MyTable = ({ users, loading }: { users: User[], loading: boolean }) => {
 
 
                     {loading ?
-                        <div className={styles.loader}>
-                            <Loader />
-                        </div>
+                        <TableSkeleton rows={8} />
+
 
                         : filteredUsers && filteredUsers.length !== 0 ?
                             filteredUsers.map((user) => {

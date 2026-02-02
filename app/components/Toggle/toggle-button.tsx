@@ -15,12 +15,20 @@ const ToggleSideBar = () => {
 
 
     return (
-        <button
-            onClick={() => dashboardContext.toggleMobileSidebar()}
-            className={styles.togglebar}
-        >
-            <LuColumns2 size={25} color={"##213F7D"}/>
-        </button>
+
+        <>
+
+           
+
+
+            <button
+                onClick={() => dashboardContext.toggleMobileSidebar()}
+                className={styles.togglebar}
+            >
+                <LuColumns2 size={25} />
+            </button>
+        </>
+
     )
 }
 
